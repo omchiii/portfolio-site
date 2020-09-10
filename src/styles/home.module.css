@@ -1,0 +1,40 @@
+.icon {
+  margin-right: 5px;
+}
+p {
+  text-align: justify;
+  width: 96%;
+  line-height: 1.8rem;
+}
+
+.container h2 {
+  display: block;
+  text-align: center;
+}
+
+.container {
+  margin-bottom: 5rem;
+}
+
+.techStack {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 15px;
+}
+
+@media only screen and (min-width: 500px) {
+  .techStack {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+.techStackChild {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  flex-direction: column;
+}

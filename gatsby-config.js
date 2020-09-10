@@ -1,64 +1,38 @@
-const postCssPresetEnv = require(`postcss-preset-env`)
-const postCSSNested = require('postcss-nested')
-const postCSSUrl = require('postcss-url')
-const postCSSImports = require('postcss-import')
-const cssnano = require('cssnano')
-const postCSSMixins = require('postcss-mixins')
+const postCssPresetEnv = require(`postcss-preset-env`);
+const postCSSNested = require("postcss-nested");
+const postCSSUrl = require("postcss-url");
+const postCSSImports = require("postcss-import");
+const cssnano = require("cssnano");
+const postCSSMixins = require("postcss-mixins");
 
 module.exports = {
   siteMetadata: {
-    title: `Hello Friend`,
-    description: `A simple starter for Gatsby. That's it.`,
-    copyrights: '',
-    author: `@panr`,
+    title: `Omer Bayram`,
+    description: `Portfolio website of a Full Stack Web developer.`,
+    copyrights: "Copyright @Omer Bayram 2020",
+    author: `@Omer Bayram`,
     logo: {
-      src: '',
-      alt: '',
+      src: "",
+      alt: "",
     },
-    logoText: 'hello friend',
-    defaultTheme: 'dark',
-    postsPerPage: 5,
+    logoText: "Omer Bayram",
+    defaultTheme: "dark",
     showMenuItems: 2,
-    menuMoreText: 'Show more',
+    menuMoreText: "Show more",
     mainMenu: [
       {
-        title: 'About',
-        path: '/about',
+        title: "Home",
+        path: "/",
       },
       {
-        title: 'Showcase',
-        path: '/showcase',
-      },
-      {
-        title: 'Example',
-        path: '/example',
+        title: "Contact Me",
+        path: "/contact",
       },
     ],
   },
   plugins: [
     `babel-preset-gatsby`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
-      },
-    },
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
@@ -68,60 +42,29 @@ module.exports = {
           postCSSMixins(),
           postCSSNested(),
           postCssPresetEnv({
-            importFrom: 'src/styles/variables.css',
+            importFrom: "src/styles/variables.css",
             stage: 1,
             preserve: false,
           }),
           cssnano({
-            preset: 'default',
+            preset: "default",
           }),
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-embed-video',
-            options: {
-              related: false,
-              noIframeBorder: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-              quality: 100,
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
-        ],
-      },
-    },
+    "gatsby-plugin-fontawesome-css",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-hello-friend`,
-        short_name: `hello-friend`,
+        name: `Omer Bayram portfolio site`,
+        short_name: `Omer`,
         start_url: `/`,
         background_color: `#292a2d`,
         theme_color: `#292a2d`,
-        display: `minimal-ui`,
-        icon: `src/images/hello-icon.png`,
+        display: `standalone`,
+        icon: `src/images/logo.png`,
       },
     },
+    "gatsby-plugin-offline",
   ],
-}
+};

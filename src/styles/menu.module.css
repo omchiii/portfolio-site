@@ -13,6 +13,17 @@
     display: none;
   }
 }
+@keyframes active {
+  25% {
+    border-bottom: 5px solid #40e0d0;
+  }
+}
+
+.active {
+  border-bottom: 2px solid #40e0d0;
+  animation-name: active;
+  animation-duration: 0.5s;
+}
 
 .menu {
   display: flex;
@@ -89,7 +100,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, .2);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 10;
   }
 }
@@ -123,7 +134,7 @@
   position: absolute;
   max-width: 300px;
   background: #fafafa;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   margin: 0;
   padding: 5px;
   list-style: none;
@@ -169,7 +180,7 @@
 
 .menuArrow {
   display: inline-block;
-  font-family: 'Inter UI';
+  font-family: "Inter UI";
   margin-left: 5px;
   transform: rotate(90deg);
 }

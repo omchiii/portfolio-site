@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import { Helmet } from 'react-helmet'
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { Link } from "gatsby";
+import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-import Menu from './menu'
+import Menu from "./menu";
 
-import style from '../styles/header.module.css'
+import style from "../styles/header.module.css";
 
 const Header = props => {
   const {
@@ -15,33 +17,33 @@ const Header = props => {
     mainMenuItems,
     menuMoreText,
     defaultTheme,
-  } = props
+  } = props;
   const defaultThemeState =
-    (typeof window !== 'undefined' && window.localStorage.getItem('theme')) ||
-    null
-  const [userTheme, changeTheme] = useState(defaultThemeState)
-  const [isMobileMenuVisible, toggleMobileMenu] = useState(false)
-  const [isSubMenuVisible, toggleSubMenu] = useState(false)
+    (typeof window !== "undefined" && window.localStorage.getItem("theme")) ||
+    null;
+  const [userTheme, changeTheme] = useState(defaultThemeState);
+  const [isMobileMenuVisible, toggleMobileMenu] = useState(false);
+  const [isSubMenuVisible, toggleSubMenu] = useState(false);
   const onChangeTheme = () => {
     const opositeTheme =
-      (userTheme || defaultTheme) === 'light' ? 'dark' : 'light'
+      (userTheme || defaultTheme) === "light" ? "dark" : "light";
 
-    changeTheme(opositeTheme)
+    changeTheme(opositeTheme);
 
-    typeof window !== 'undefined' &&
-      window.localStorage.setItem('theme', opositeTheme)
-  }
-  const onToggleMobileMenu = () => toggleMobileMenu(!isMobileMenuVisible)
-  const onToggleSubMenu = () => toggleSubMenu(!isSubMenuVisible)
+    typeof window !== "undefined" &&
+      window.localStorage.setItem("theme", opositeTheme);
+  };
+  const onToggleMobileMenu = () => toggleMobileMenu(!isMobileMenuVisible);
+  const onToggleSubMenu = () => toggleSubMenu(!isSubMenuVisible);
 
   return (
     <>
       <Helmet>
         <body
           className={
-            (userTheme || defaultTheme) === 'light'
-              ? 'light-theme'
-              : 'dark-theme'
+            (userTheme || defaultTheme) === "light"
+              ? "light-theme"
+              : "dark-theme"
           }
         />
       </Helmet>
@@ -53,13 +55,20 @@ const Header = props => {
                 <img src={siteLogo.src} alt={siteLogo.alt} />
               ) : (
                 <>
-                  <span className={style.mark}>></span>
+                  <span className={style.mark}></span>
                   <span className={style.text}>{logoText}</span>
                   <span className={style.cursor} />
                 </>
               )}
             </div>
           </Link>
+          <a
+            target="_blank"
+            style={{ marginLeft: "3px" }}
+            href="https://www.linkedin.com/in/omchiii/"
+          >
+            <FontAwesomeIcon icon={faLinkedin} size="2x" />
+          </a>
           <span className={style.right}>
             <Menu
               mainMenu={mainMenu}
@@ -75,8 +84,8 @@ const Header = props => {
         </div>
       </header>
     </>
-  )
-}
+  );
+};
 
 Header.propTypes = {
   siteLogo: PropTypes.object,
@@ -90,6 +99,6 @@ Header.propTypes = {
   ),
   mainMenuItems: PropTypes.number,
   menuMoreText: PropTypes.string,
-}
+};
 
-export default Header
+export default Header;
